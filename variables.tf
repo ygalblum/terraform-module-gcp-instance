@@ -21,7 +21,6 @@ variable "service_account" {
 variable "name" {
     type = string
     description = "Name of the VM"
-    default = "ollama"
 }
 
 variable "machine_type" {

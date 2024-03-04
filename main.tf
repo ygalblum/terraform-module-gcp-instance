@@ -20,7 +20,7 @@ data "google_compute_image" "boot_image" {
   most_recent = true
 }
 
-resource "google_compute_instance" "ollama" {
+resource "google_compute_instance" "this" {
   boot_disk {
     auto_delete = true
     device_name = "${var.name}"
