@@ -8,6 +8,11 @@ variable "gcp_region" {
     description = "GCP Region to provision the VM in"
 }
 
+variable "name" {
+    type = string
+    description = "Name of the VM"
+}
+
 variable "ssh_public_key" {
   type = string
   description = "SSH public key to inject into the VM"
@@ -16,11 +21,6 @@ variable "ssh_public_key" {
 variable "service_account" {
     type = string
     description = "Service account in the project to assign to the VM"
-}
-
-variable "name" {
-    type = string
-    description = "Name of the VM"
 }
 
 variable "machine_type" {
