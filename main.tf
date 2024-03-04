@@ -39,7 +39,7 @@ resource "google_compute_instance" "this" {
   enable_display      = false
 
   guest_accelerator {
-    count = 1
+    count = "${var.accelerator_count}"
     type  = "projects/${var.gcp_project}/zones/${local.zone}/acceleratorTypes/${var.accelerator_type}"
   }
 

@@ -29,6 +29,12 @@ variable "machine_type" {
     default = "n1-standard-4"
 }
 
+variable "accelerator_count" {
+    type = number
+    description = "Number of GPUs"
+    default = 0
+}
+
 variable "accelerator_type" {
     type = string
     description = "Accelerator type"
