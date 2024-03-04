@@ -53,13 +53,13 @@ variable "ssh_port" {
     default = 22
 }
 
-variable "application_port" {
-    type = number
+variable "application_ports" {
+    type = list(number)
     description = "Allow access to this port. Set to 0 to disable"
-    default = 0
+    default = []
 }
 
-variable "limit_additionl_port" {
+variable "limit_additionl_ports" {
     type = bool
     description = "Limit access to the additional port to the provisioning source IP"
     default = false

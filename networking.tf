@@ -31,16 +31,16 @@ resource "google_compute_firewall" "ssh" {
 
 # Allow access to the application port
 resource "google_compute_firewall" "application-port" {
-  count = var.application_port == 0 ? 0 : 1
+  count = length(var.application_ports) == 0 ? 0 : 1
 
-  name    = "${var.name}-application-port"
+  name    = "${var.name}-application-ports"
   network = google_compute_network.this.name
 
   allow {
     protocol = "tcp"
-    ports    = [ var.application_port ]
+    ports    = var.application_ports
   }
 
-  source_ranges = [ var.limit_additionl_port ? local.myip_cidr : "0.0.0.0/0" ]
-  target_tags = [ "${var.name}-application-port" ]
+  source_ranges = [ var.limit_additionl_ports ? local.myip_cidr : "0.0.0.0/0" ]
+  target_tags = [ "${var.name}-application-ports" ]
 }

@@ -8,7 +8,7 @@ data "google_compute_zones" "available" {
 locals {
   instance_network_tags = concat(
     ["${var.name}-ssh"],
-    var.application_port == 0 ? [] : ["${var.name}-application-port"]
+    length(var.application_ports) == 0 ? [] : ["${var.name}-application-ports"]
   )
   myip_cidr = "${chomp(data.http.myip.response_body)}/32"
   zone = data.google_compute_zones.available.names[0]
