@@ -54,8 +54,14 @@ variable "ssh_port" {
     default = 22
 }
 
-variable "secured_ollama_port" {
+variable "application_port" {
     type = number
-    description = "Allow access to ollama on this port. Set to 0 to disable"
-    default = 11435
+    description = "Allow access to this port. Set to 0 to disable"
+    default = 0
+}
+
+variable "limit_additionl_port" {
+    type = bool
+    description = "Limit access to the additional port to the provisioning source IP"
+    default = false
 }

@@ -29,18 +29,18 @@ resource "google_compute_firewall" "ssh" {
   target_tags = [ "${var.name}-ssh" ]
 }
 
-# Allow access to the secured Ollama port
-resource "google_compute_firewall" "secured_ollama" {
-  count = var.secured_ollama_port == 0 ? 0 : 1
+# Allow access to the application port
+resource "google_compute_firewall" "application-port" {
+  count = var.application_port == 0 ? 0 : 1
 
-  name    = "${var.name}-secured-ollama"
+  name    = "${var.name}-application-port"
   network = google_compute_network.this.name
 
   allow {
     protocol = "tcp"
-    ports    = [ var.secured_ollama_port ]
+    ports    = [ var.application_port ]
   }
 
-  source_ranges = [ "0.0.0.0/0" ]
-  target_tags = [ "${var.name}-secured-ollama" ]
+  source_ranges = [ var.limit_additionl_port ? local.myip_cidr : "0.0.0.0/0" ]
+  target_tags = [ "${var.name}-application-port" ]
 }
