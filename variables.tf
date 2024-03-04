@@ -64,3 +64,9 @@ variable "limit_additionl_port" {
     description = "Limit access to the additional port to the provisioning source IP"
     default = false
 }
+
+variable "additional_scopes" {
+    type = list(string)
+    description = "Additional scopes to assign to the service account"
+    default = []
+}

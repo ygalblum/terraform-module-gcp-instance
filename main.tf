@@ -72,10 +72,7 @@ resource "google_compute_instance" "this" {
 
   service_account {
     email = var.service_account
-    scopes = [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/drive.readonly"
-    ]
+    scopes = concat(["https://www.googleapis.com/auth/cloud-platform"], var.additional_scopes)
   }
 
   shielded_instance_config {
